@@ -1,0 +1,80 @@
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .box{
+      border: 3px solid rgb(222, 225, 213);
+      width: 400;
+      height: 200px;
+     margin-top: 20px;
+     margin-right: 50px;
+     /* border-style: double; */
+     background-color: white;
+     border-inline-color: black;
+  }
+
+  .box2{
+    border: 3px solid rgb(222, 225, 213);
+    width: 350;
+    height: 215px;
+   margin-top: 20px;
+   margin-right: 50px;
+   /* border-style: double; */
+   background-color: white;
+   border-inline-color: black;
+   
+}
+
+#Info{
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+  #price{
+      font-size: 
+      45px;
+      padding-left: 10px;
+      font-weight: bold;
+  }
+
+  #title{
+      font-size: 25px;
+      padding-left: 10px;
+
+  }
+  img{
+      padding-left: 40px;
+      padding-top: 20px;
+  }
+
+
+
+  .btn{
+    padding: 5px;
+    background-color: beige;
+    border-radius: 5px;
+    margin-left: 80px;
+    height: 30px; width: 190px;
+    margin-bottom: 20px;
+    
+    
+
+  }
+
+
+  .btn:hover{
+    
+    cursor: pointer;
+  }
+
+  body{
+    background-color: rgb(231, 238, 238);
+  }

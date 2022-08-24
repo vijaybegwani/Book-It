@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SellPAge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous" />
+    <link rel="stylesheet" href="sell.css">
+    
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BookIt</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="MyAccount.html">My Profile</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Trade
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="buyHome.html">Buy</a></li>
+              <li><a class="dropdown-item" href="#">Sell</a></li>
+              <li><hr class="dropdown-divider"></li>
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a id="logout" class="nav-link active ">Logout</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav><br><br>
+
+
+    <h1>Sell Your Book</h1>
+      <h5>Fill The Following Details</h5>
+
+      <form action="" id="sellform" style="margin: 50px auto; padding: 50px auto; text-align: center;">
+        
+        <div class="main">   
+    <span>Semester </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" name="name" id="sem" placeholder="Eg 1/2/3/4...." required > <br><br><br>
+    <span>Subject </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" id="sub" placeholder="Enter subject name" required>&nbsp;&nbsp; <br><br><br>
+    <span>Author Name </span>  <input type="text" name="name" id="aname" placeholder="Enter Authors Name" required >&nbsp;&nbsp; <br><br><br>
+    <span> Price </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" name="name" id="price" placeholder="Put price in INR only" required>&nbsp;&nbsp; <br><br>
+    
+    <span>Upload Book photos </span>&nbsp;&nbsp;&nbsp;
+
+      <input type="file"  id="img" required>
+      <!-- <img id="image"> -->
+      <br><br>
+    
+
+    <button id="btnn" type="submit"> Proceed </button>
+</div>
+
+</body>
+</html>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script> 
+    
+<script >
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAg6yb_FDLP79hyiw5cVqJSScoSaxxTiKw",
+      authDomain: "bookit-6c0bb.firebaseapp.com",
+      databaseURL: "https://bookit-6c0bb-default-rtdb.firebaseio.com",
+      projectId: "bookit-6c0bb",
+      storageBucket: "bookit-6c0bb.appspot.com",
+      messagingSenderId: "953227991864",
+      appId: "1:953227991864:web:0d63e90be99e09154bffcd",
+      measurementId: "G-MVD3720NYL"
+    };
+  
+    
+  firebase.initializeApp(firebaseConfig);
+  </script>
+     
+      
+  <Script>
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     
+    const user = firebase.auth().currentUser
+    var uid = user.uid;
+    var email_id = user.email
+    console.log(uid);
+    console.log(email_id);
+ 
+
+var sem = document.getElementById("sem")
+var subject = document.getElementById("sub")
+var price = document.getElementById("price")
+var authorName = document.getElementById("aname")
+var btnn = document.getElementById("btnn")
+
+const database = firebase.database().ref();
+
+
+ 
+ btnn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+
+ if(sem.value  == 1){
+
+const ref = firebase.storage().ref('/sem1_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+  
+   
+    database.child('Sem1_books').push({
+      
+    
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+                
+                // BookId: database
+
+    });
+
+    console.log(url)
+    console.log(database.push().getKey());
+                alert("Book Uploaded Successfully")
+                
+                location.reload();
+                
+               // const image = document.getElementById('image')
+               // image.src = url
+        });
+  }
+
+
+  
+else if(sem.value  == 2){
+
+const ref = firebase.storage().ref('/sem2_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+
+    
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem2_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 3){
+
+    const ref = firebase.storage().ref('/sem3_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem3_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 4){
+
+    const ref = firebase.storage().ref('/sem4_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem4_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 5){
+    const ref = firebase.storage().ref('/sem5_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem5_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 6){
+    const ref = firebase.storage().ref('/sem6_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem6_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 7){
+    const ref = firebase.storage().ref('/sem7_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem7_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else if(sem.value  == 8){
+  const ref = firebase.storage().ref('/sem8_Books')
+
+const file = document.getElementById('img').files[0]
+
+const name = file.name
+
+const metadata = {
+    contentType:file.type
+}
+
+const task = ref.child(name).put(file,metadata)
+
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => { 
+    //const usersRef = database.child('Sem1_books'); 
+    database.child('Sem8_books').push({
+    //database.ref('/Sem1_books/').push({
+                Semester: sem.value,
+                Subject :  subject.value, 
+                AuthorName: authorName.value,
+                Price: price.value,
+                ImgURL: url,
+                UserId : uid,
+                Uploaded_by: email_id,
+                BookId: database.push().getKey()
+    });
+    console.log(url)
+                alert("Book Uploaded Successfully")
+                location.reload();
+              });
+  }
+
+  else{
+                alert("Please Enter Semester from 1 to 8")
+            }
+});
+
+}
+    else {
+      location.replace("Loginpage.html")
+    }
+  });
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script> 
+ 
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> 
+ 
+ 
+   
+ <script src="logout.js"></script>
+
+

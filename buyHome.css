@@ -1,0 +1,56 @@
+body{
+    background-image: url(buy_back.jpg);
+}
+.small-container{
+
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+.col-4{
+    flex-basis: 25%;
+    padding: 30px;
+    min-width: 200px;
+    margin-bottom: 50px ;
+
+}
+.col-4 img{
+    width: 100%;
+
+}
+h4{
+    padding-top: 30px;
+
+}
+
+.small-container-1{
+    
+    max-width: 1080px; 
+     margin: auto;
+     padding-left: 25px;
+     padding-right: 25px;
+}
+
+.col-1{
+    
+    flex-basis: 10%;
+    padding: 30px;
+    min-width: 200px;
+    /* margin-bottom: 50px ; */
+    display: table;
+    width: 25%;
+    float: left;
+  
+    
+    
+    
+
+}
+.col-1 img{
+    width: 100%;
+    
+   
+
+}

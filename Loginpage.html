@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: linear-gradient(to right, rgb(89, 170, 170), rgb(216, 230, 224));
+        }
+        
+      
+        div{
+            width: 700px;
+            height: 690px;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 20px;
+
+            
+            background-color: rgb(216, 230, 224);
+            padding: 20px 30px px 30px ;
+            margin: 0px 450px 0px 450px;
+            /* font-size: 400px; */
+            
+        }
+        h1{
+            font-family: Rampart one;
+            font-weight: 900;
+            font-size:1.6cm;
+            background-color: rgb(89, 170, 170);
+            width: 100%;
+            padding: 40px 0px 40px 0px;
+            border-radius: 20px;
+            margin: 0px 0px 100px 0px;
+            box-sizing: border-box;
+
+        }
+        p{
+            font-size: 19px;
+        }
+        input[type="text"],input[type="password"]{
+            padding: 8px;
+            margin: 6px;
+            width: 50%;
+            font-size: 15px;
+            border:none;
+            border-radius: 20px;
+        }
+        input[type="submit"]{
+            padding: 10px;
+            background-color: rgb(89, 170, 170);
+            margin: 30px;
+            cursor: pointer;
+            width: 20%;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+
+            
+        }
+        input[type="submit"]:hover{
+            background-color: rgb(171, 194, 71);
+        }
+        a{
+            padding: 10px;
+            font-size: 18px;
+        }
+        a:hover{
+            color: red;
+        }
+        
+    </style>
+
+
+</head>
+<body>
+    <div>
+        
+        <h1>BOOKIT</h1>
+
+        <form action="" id="login">
+        
+        
+        <P>Email ID <input type="text" name="User" id="User" placeholder="Enter Your Name"></P>
+        <p>Password <input type="password" name="password" id="password" placeholder="Enter Your Password"></p>
+        
+        <input type="submit" value="Log in">
+       </form>
+        <br><br>
+
+        <a href="Register.html" target="blank">Create Account</a>
+        
+        
+        <a href="Forgot.html">Forget Password?</a>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> 
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script> 
+   <script src="fireConfig.js"></script>
+    
+    <script src="login.js"></script>
+</body>
+
+</html>

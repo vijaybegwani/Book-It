@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyPage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <style>
+    .dropdown-item {
+      content: counter(item-counter, upper-roman) ". ";
+      /* by specifying the upper-roman as style the output would be in roman numbers */
+    }
+  </style>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">BookIt</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Semester
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="sem1Buy.html">1</a></li>
+                <li><a class="dropdown-item" href="sem2Buy.html">2</a></li>
+                <li><a class="dropdown-item" href="sem3Buy.html">3</a></li>
+                <li><a class="dropdown-item" href="sem4Buy.html">4</a></li>
+                <li><a class="dropdown-item" href="sem5Buy.html">5</a></li>
+                <li><a class="dropdown-item" href="sem6Buy.html">6</a></li>
+                <li><a class="dropdown-item" href="sem7Buy.html">7</a></li>
+                <li><a class="dropdown-item" href="sem8Buy.html">8</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <input type="text" placeholder="Type to search..">
+        <div class="autocom-box">
+          <!-- here list are inserted from javascript -->
+        </div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+      </div>
+    </div>
+
+
+
+
+    <div id="root">
+      <!-- <div id="image"></div> -->
+
+     <!-- <img src="test" height="190px" width="200px" id="image"/>   -->
+    <div id="productContainer" > </div> &nbsp;&nbsp;
+    <!-- <button>Add to Cart</button> -->
+   </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <!-- <script src="jquery.js"></script> -->
+   
+
+
+    <script>
+
+const firebaseConfig = {
+      apiKey: "AIzaSyAg6yb_FDLP79hyiw5cVqJSScoSaxxTiKw",
+      authDomain: "bookit-6c0bb.firebaseapp.com",
+      databaseURL: "https://bookit-6c0bb-default-rtdb.firebaseio.com",
+      projectId: "bookit-6c0bb",
+      storageBucket: "bookit-6c0bb.appspot.com",
+      messagingSenderId: "953227991864",
+      appId: "1:953227991864:web:0d63e90be99e09154bffcd",
+      measurementId: "G-MVD3720NYL"
+    };
+
+
+firebase.initializeApp(firebaseConfig);
+
+
+var userDataRef = firebase.database().ref("Sem1_books").orderByKey();
+userDataRef.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key;
+      var childData = childSnapshot.val();
+
+      //var sem_val = childSnapshot.val().Semester;
+    var price_val = childSnapshot.val().Price;
+    var aname_val = childSnapshot.val().AuthorName;
+    var sub_val = childSnapshot.val().Subject;
+    var url_val = childSnapshot.val().ImgURL;
+
+
+    var productContainer = document.getElementById('productContainer')
+    var product = `<div class="col1">
+        <div  >
+            <img   src=${url_val}   height="190px" width="200px" id="image">
+            <div >
+              <h5 id="amount" >₹ ${price_val} /-</h5>
+              <p  id="subj" >${sub_val}
+
+             (<span>${aname_val}</span>)</p>
+             
+              <button id="btn" >BUY </button > <br><br><br>  
+            </div>
+          </div>
+        </div>`
+        productContainer.innerHTML += product;
+
+
+  });
+})
+//});
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+    <script src=" suggestions.js"></script>
+    <script src="  script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register</title>
+
+    <style>
+          body{
+            background-image: linear-gradient(to right, rgb(169, 235, 235), rgb(216, 230, 224));
+        }
+        div{
+            font-size: 20px;
+            width: 750px;
+            height: 800px;
+            /* text-align: center; */
+            box-sizing: border-box;
+            
+
+            
+            background-color: rgb(188, 224, 228);
+            padding: 20px 30px px 30px ;
+            margin: 0px 450px 0px 450px;
+            /* border-radius: 20px; */
+            
+        }
+        input[type="text"],input[type="password"],input[type="email"],input[type="number"]{
+            padding: 8px;
+            margin: 10px;
+            width: 95%;
+            font-size: 15px;
+            border:none;
+            /* border-radius: 20px ;*/
+        }
+        #signUp{
+            padding: 10px;
+            background-color: rgb(24, 187, 51);
+            margin: 30px;
+            margin-left: 40%;
+            cursor: pointer;
+            width: 15%;
+            border: none;
+            
+            
+            
+            font-size: 18px;
+            border-radius: 15px; 
+        }
+        p{
+            margin:6px;
+            padding: 10px;
+        }
+        h2{
+            text-align: center;
+            padding: 20px 0 15px 0;
+            margin-top: 5px;
+            
+        }
+    </style>
+
+</head>
+
+
+<body>
+    
+    <div >
+        <form action="" id="signup-form">
+    <h2>Create Account</h2>
+    <p>Name <input type="text" name="name" id="name" placeholder="Enter Your Name" required> </p>
+    <p>Email <input type="email" name="email" id="email" placeholder="Enter Your College Email Id" required></p>
+    <p>Mobile Number <input type="number" name="mob" id="mob" placeholder="Enter Your Mobile Number" required></p>
+    <p>Password <input type="password" name="pass" id="pass" placeholder="Enter Your Password" required></p>
+    <p>Confirm Password <input type="password" name="pass" id="repass" placeholder="Confirm Your Password" required></p>
+    <button    type="submit" id="signUp">Sign Up</button>
+    
+    </form> 
+    </div>
+
+     
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> 
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script> 
+   <script src="fireConfig.js"></script>
+   <script src="signup.js"></script>
+   <script>
+        
+     
+   </script>
+    
+
+    
+</body>
+</html>

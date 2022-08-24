@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+
+    <style>
+
+body{
+            background-image: linear-gradient(to right, rgb(200, 236, 236), rgb(216, 230, 224));
+        }
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+  }
+  .profile{
+    border-radius: 50%;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  
+  a {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    background-color: darkcyan;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+ a:hover {
+    opacity: 0.7;
+  }
+ 
+    </style>
+</head>
+<body>
+   
+    <div class="card">
+        <!-- <img class="profile" src=" " alt="img" style="width:20%"> -->
+        <h1 id="name"></h1> 
+        <h2 id="emailID" > </h2>
+        
+         
+        <p class="title">3st Year, CMPN</p>
+       
+        <p>VESIT </p>
+        <a href="Myads.html"><b><i class="material-icons md-20">auto_stories</i>   My ADs 
+        </b></a>
+        <br>
+        <a href="#"><b><i class="material-icons md-20">bookmark</i>   Saved 
+        </b></a>
+        <br>
+        <a href="#"><b><i class="material-icons md-20">settings</i>  Settings</b></a>
+        <br>
+        <a href="#"><b><i class="material-icons md-20">message</i> Messages </b></a>
+        <br>
+        <a id="logout"  href="#"><b><i class="material-icons md-20" >logout</i>  Log out </b></a>
+        
+      </div>
+      
+       
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>  
+<script src="fireConfig.js"></script>
+ <script src="MyAccount.js"></script> 
+ <script src="logout.js"></script>
+
+
+</html>

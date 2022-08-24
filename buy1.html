@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+  crossorigin="anonymous"
+/>
+  <link rel="stylesheet" href="buy1.css">
+  <title>Buy this book</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BookIt</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="MyAccount.html">My Profile</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Trade
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="buyHome.html">Buy</a></li>
+              <li><a class="dropdown-item" href="sell.html">Sell</a></li>
+              <li><hr class="dropdown-divider" /></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a id="logout" class="nav-link active">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="column">
+      <img src="books img/book1.jpg" alt="">
+    </div>
+    <div class="column">
+      <div class="box">
+        <p id="price">Rs. 340 </p>
+        <p id="title">Engineering Mechanics</p>
+        
+      </div>
+      <div class="box2">
+        <p id="Info">Seller's Info: <br> <br>
+        Vijay <br>
+        Contact: 999999999
+        </p>
+        <button class="btn" onclick="click()">Chat With Seller</button> &nbsp
+         <button class="btn"> Buy</button>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+     document.addEventListener("click", click);
+     
+    function click() {
+      location.replace('chattt/index.html');
+       console.log("clicked");
+    }
+  </script>
+</body>
+</html>

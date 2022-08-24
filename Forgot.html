@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reset pass</title>
+
+    <style>
+        div{
+            font-size: 20px;
+            width: 500px;
+            height: 450px;
+            /* text-align: center; */
+            box-sizing: border-box;
+
+
+
+            background-color: rgba(225, 236, 236, 0.603);
+            padding: 20px 30px px 30px ;
+            margin: 128px 450px 0px 510px;
+            border-radius: 15px;
+            /* border-radius: 20px; */
+
+        }
+        input[type="email"]{
+            padding: 13px;
+            margin-top: 13px;
+            margin-bottom: 12px;
+            width: 95%;
+            font-size: 15px;
+            border:none;
+            border-radius: 10px ;
+        }
+       
+            /* border-radius: 15px; */
+        
+        p{
+            margin:6px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+         h2{ 
+            text-align: center;
+             padding: 30px 0 15px 0; 
+             margin-top: 15px; 
+             font-family:monospace;
+         }
+
+        
+        #reset{
+            
+            width: 90%;
+            cursor: pointer;
+            background-color: rgb(49, 109, 236);
+            margin-top:20px;
+            margin-left: 20px;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 7px;
+            border: none;
+            color: white;
+
+
+        }
+        #line{
+            font-size: 14px;
+            font-weight: 500;
+            color: rgb(132, 132, 226);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #back{
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+    </style>
+
+</head>
+
+
+<body>
+    <div id="">
+    <h2>Reset Password  <br> <span id="line"> To restore your password, enter the email you specified during <br> registration</span> </h2>
+  
+    <form action="" id="forgetpass">
+    
+    <p>E-mail <input type="email" name="email" id="email" placeholder="Enter Your College Email Id"></p>
+
+    <button id="reset">Reset  password</button>
+    <a href="Loginpage.html" id="back"><h5> Go back</h5></a>
+    </form>
+    
+    
+    </div>
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> 
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+   <script src="fireConfig.js"></script>
+    <script src="forgetpass.js"></script>
+
+</body>
+</html>
